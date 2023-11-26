@@ -6,7 +6,7 @@ import express from "express";
 const app = express();
 
 app.use(express.static("images")); //exposing all the files inside 'images' folder directly on the root backend server
-//check the front end Places and check image source using string template literal
+//check the frontend Places and check image source using string template literal
 
 app.use(bodyParser.json());
 
