@@ -4,6 +4,7 @@ import Places from "./Places.jsx";
 
 export default function AvailablePlaces({ onSelectPlace }) {
   const [availablePlaces, setAvailablePlaces] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   // useEffect(() => {
   //   //fetching data.. via fetch()=is not provided by react but by the browser
@@ -23,9 +24,11 @@ export default function AvailablePlaces({ onSelectPlace }) {
   //async version
   useEffect(() => {
     async function fetchPlaces() {
+      setIsFetching(true);
       const response = await fetch("http://localhost:3000/places");
       const resData = await response.json(); //wasnt executing the json with ()
       setAvailablePlaces(resData.places);
+      setIsFetching(false);
     }
     //gotta execute fetchPlaces thouggh
     fetchPlaces();
@@ -35,6 +38,8 @@ export default function AvailablePlaces({ onSelectPlace }) {
     <Places
       title="Available Places"
       places={availablePlaces}
+      isLoaading={isFetching}
+      loadingText="Fetching place data..."
       fallbackText="No places available."
       onSelectPlace={onSelectPlace}
     />
