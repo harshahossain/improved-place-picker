@@ -15,7 +15,7 @@ function App() {
 
   //states for error handling and stuff for user selected places
   const [isFetching, setIsFetching] = useState(false);
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
